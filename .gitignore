@@ -1,3 +1,12 @@
-nimcache/
-nimblecache/
-htmldocs/
+# Ignore Python compiled files
+__pycache__/
+
+# Ignore Python bytecode
+*.pyc
+
+# Ignore Python egg metadata
+*.egg-info/
+*.egg
+
+# Ignore virtual environment directory
+venv/

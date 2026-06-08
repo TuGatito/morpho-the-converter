@@ -1,109 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Morpho The Converter</title>
-  <!-- Alpine.js CDN -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Morpho The Converter</title>
 </head>
 
-<body x-data="app()" x-init="init()">
-
-  <div class="tui-container">
-    <!-- CABECERA -->
-    <div class="header">
-      <div class="title" x-text="getText('header.title')"></div>
-      <div class="selectors">
-        <div class="dropdown" x-data="{ open: false }">
-          <button @click="open = !open" class="selector-btn" x-text="getText('header.languageButton')"></button>
-          <div x-show=" open" @click.outside="open = false" class="dropdown-menu">
-            <a href="#" @click="setLanguage('en'); open=false" x-text="getText('header.languageMenu.en')"></a>
-            <a href="#" @click="setLanguage('es'); open=false" x-text="getText('header.languageMenu.es')"></a>
-            <a href="#" @click="setLanguage('ja'); open=false" x-text="getText('header.languageMenu.ja')"></a>
-          </div>
-        </div>
-        <div class="dropdown" x-data="{ open: false }">
-          <button @click="open = !open" class="selector-btn" x-text="getText('header.themeButton')"></button>
-          <div x-show="open" @click.outside="open = false" class="dropdown-menu">
-            <a href="#" @click="setTheme('matrix'); open=false" x-text="getText('header.themeMenu.matrix')"></a>
-            <a href="#" @click="setTheme('amber'); open=false" x-text="getText('header.themeMenu.amber')"></a>
-            <a href="#" @click="setTheme('dracula'); open=false" x-text="getText('header.themeMenu.dracula')"></a>
-            <a href="#" @click="setTheme('light'); open=false" x-text="getText('header.themeMenu.light')"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CUERPO PRINCIPAL: 2 COLUMNAS -->
-    <div class="main-grid">
-      <!-- COLUMNA IZQUIERDA: MASCOTA -->
-      <div class="mascota-col">
-        <div class="mascota-box">
-          <div class="mascota-glifo" x-text="mascotaExpresion"></div>
-          <div class="mascota-bubble">
-            <p x-text="mascotaTexto"></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- COLUMNA DERECHA: ÁREA DE TRABAJO -->
-      <div class="work-col">
-        <!-- Zona de arrastre / lista de archivos -->
-        <div class="dropzone" @dragover.prevent="dragOver = true" @dragleave.prevent="dragOver = false"
-          @drop.prevent="handleDrop" :class="{ 'drag-over': dragOver }">
-          <template x-if="files.length === 0">
-            <div class="empty-drop">
-              <div x-text="getText('dropzone.emptyTitle')"></div>
-              <div class="small" x-text="getText('dropzone.emptySubtitle')"></div>
-              <div class="supported" x-text="getText('dropzone.supportedFormats')"></div>
-            </div>
-          </template>
-          <template x-if="files.length > 0">
-            <div class="file-list">
-              <div class="file-list-header" x-text="getText('dropzone.fileListHeader')"></div>
-              <template x-for="(file, idx) in files" :key="idx">
-                <div class="file-item"
-                  x-text="getText('dropzone.fileItemPattern', { name: file.name, type: file.type })"></div>
-              </template>
-            </div>
-          </template>
-        </div>
-
-        <!-- Selectores de formato y opciones -->
-        <div class="options-panel">
-
-          <div class="export-row">
-            <label x-text="getText('optionsPanel.exportRow.label')"></label>
-            <input type="text" x-model="exportDir" :placeholder="getText('optionsPanel.exportRow.placeholder')"
-              class="tui-input">
-            <button @click="selectOutputDir" class="small-btn"
-              x-text="getText('optionsPanel.exportRow.chooseButton')"></button>
-          </div>
-          <div class="action-row">
-            <button class="convert-btn" :disabled="files.length === 0" @click="startConversion">▶ CONVERTIR</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PANEL DE LOGS INFERIOR -->
-    <div class="logs-panel">
-      <div class="logs-header" x-text="getText('logs.header')"></div>
-      <div class="logs-content" x-ref="logsContainer">
-        <template x-for="log in logs" :key="log.id">
-          <div class="log-line" x-text="log.text"></div>
-        </template>
-      </div>
-    </div>
-  </div>
-
-  <!-- JavaScript de la aplicación -->
-  <script src="locales/locales.js"></script>
-  <script src="js/app.js"></script>
+<body>
+    <div id="app"></div>
+    <script src="./src/main.js" type="module"></script>
 </body>
 
 </html>

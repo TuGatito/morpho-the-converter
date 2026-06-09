@@ -1,6 +1,6 @@
 # Morpho The Converter 🦋
 
-An offline, privacy-first, ultra-lightweight desktop application that acts as a local alternative to online file converters like Convertio. Built with **Go**, **Wails**, and **Alpine.js**, Morpho packs all its dependencies into a single, fully portable executable—no installers, no cloud uploads, and zero configuration required.
+An offline, privacy-first, ultra-lightweight desktop application that acts as a local alternative to online file converters like Convertio. Built with **Python**, **Pywebview**, and **Alpine.js**, Morpho packs all its dependencies into a single, fully portable executable—no installers, no cloud uploads, and zero configuration required.
 
 The interface breaks away from traditional OS windows, featuring a minimalist **Text User Interface (TUI)** aesthetic driven exclusively by Drag-and-Drop workflows, complete with a reactive ASCII glyph assistant.
 
@@ -31,20 +31,21 @@ morpho-the-converter/
 ├── bin/                       # Platform-specific native binaries (e.g., FFmpeg, Pandoc)
 │   ├── windows/
 │   └── linux/
-├── backend/                   # Pure Go Core
-│   ├── config/                # JSON State & Preference management (Language, Theme)
-│   └── converter/             # Native execution pipelines split by MIME-types
-│       ├── converter.go       # Core OS-sniffing runner & file orchestrator
-│       ├── audio.go           
-│       ├── video.go           
-│       ├── image.go           
-│       ├── document.go        
-│       └── font.go            
+├── backend/                   # Pure Python Core
+│   ├── downloader/            # ¡NUEVO MÓDULO!
+│   │   ├── downloader.py      # Orquestador, URLs de mirrors y descompresión (.zip/.tar.gz)
+│   │   └── manifest.py        # Links estáticos mapeados por SO (Win, Linux, Mac)
+│   ├── converters/            # Native execution pipelines split by MIME-types
+│   │   ├── audio.py         
+│   │   ├── video.py          
+│   │   ├── image.py           
+│   │   └── document.py        
+│   ├── config.py              # JSON State & Preference management (Language, Theme)     
+│   ├── converter.py           # Core OS-sniffing runner & file orchestrator
+│   └── api.py                 # Entrypoint exposing Python methods to Frontend context 
 ├── frontend/                  # Lightweight TUI Presentation
 │   └── src/
 │       ├── index.html         # Borderless framing
 │       ├── css/style.css      # Monospaced typography & terminal aesthetics
 │       └── js/app.js          # Alpine.js state-machine & Wails API bindings
-├── main.go                    # Wails runtime configuration lifecycle
-├── app.go                     # Entrypoint exposing Go methods to Frontend context
-└── wails.json                 # Native window flags (Frameless, Dimensions, Drop-Targets)
+└── main.py                    # Wails runtime configuration lifecycle

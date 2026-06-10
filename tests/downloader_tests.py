@@ -1,11 +1,9 @@
 import os
 import sys
 
-# Agrega la raíz del proyecto al PYTHONPATH para que pueda encontrar el módulo 'backend'
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import unittest
-import shutil
 from backend.downloader.downloader import download_tool, extract_executables, get_bin_dir
 from backend.downloader.manifest import Tool
 

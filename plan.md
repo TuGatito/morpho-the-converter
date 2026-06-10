@@ -18,10 +18,10 @@
 
 ### 🔳 Hito 3: La API de Conversión Acoplada (Execution Engine)
 
-* [ ] Modificar las firmas de los métodos en `audio.py`, `video.py`, `image.py`, `document.py` y `font.py` para que consuman dinámicamente el path verificado que entregue el módulo `downloader`.
-* [ ] Implementar la ejecución interna mediante `subprocess`, capturando correctamente las salidas de error estándar (*stderr*) para pasárselas al glifo en caso de que una conversión falle internamente.
-* [ ] Validar el soporte para colas de procesamiento por lotes (procesar secuencialmente o en paralelo mediante `concurrent.futures` o `threading` el array de archivos arrastrados).
-* [ ] **PR #3: API modular de conversión conectada a binarios locales bajo demanda.**
+* [x] Modificar las firmas de los métodos en `audio.py`, `video.py`, `image.py`, `document.py` y `font.py` para que consuman dinámicamente el path verificado que entregue el módulo `downloader`.
+* [x] Implementar la ejecución interna mediante `subprocess`, capturando correctamente las salidas de error estándar (*stderr*) para pasárselas al glifo en caso de que una conversión falle internamente.
+* [x] Validar el soporte para colas de procesamiento por lotes (procesar secuencialmente o en paralelo mediante `concurrent.futures` o `threading` el array de archivos arrastrados).
+* [x] **PR #3: API modular de conversión conectada a binarios locales bajo demanda.**
 
 ### 🔳 Hito 4: Frontend TUI y Drag & Drop
 
